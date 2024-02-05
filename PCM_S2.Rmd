@@ -7,8 +7,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-PHYLOGENETIC GENERALIZAED LEAST SQUARES
-MÍNIMOS CUADRADOS FILOGNÉTICOS GENERALIZADOS 
+PHYLOGENETIC GENERALIZED LEAST SQUARES
+MÍNIMOS CUADRADOS FILOGENÉTICOS GENERALIZADOS 
 #############################################
 
 NO INDEPENDENCIA ESTADÍSTICA DE LOS DATOS DE ESPECIES EMPARENTADAS
@@ -95,7 +95,7 @@ corBM
 
 Con el argumento form indicamos a la función como hacer la correspondencia entre las especies en el data.frame y en la filogenia. Si no indicamos como hacer esto, la función asume que ambos están en el mismo orden (lo que no suele ser el caso).
 
-Ahora estamos listos para ajustar nuestro modelo lineal.Haremos esto usando la función gls de  nlme. 
+Ahora estamos listos para ajustar nuestro modelo lineal. Haremos esto usando la función gls de  nlme. 
 gls funciona de manera muy similar a la función lm que ya hemos aprendido pero (para nuestros propósitos) tomaremos solo un argumento adicional: correlation.
 El valor de la correlación es solo nuestro "corStruct", corBM, que generamos anteriormente usando corBrownian.
 
@@ -115,7 +115,7 @@ coef(pgls.primate)
 abs(coef(pic.primate)[1] -coef(pgls.primate)[2])
 ```
 
-Como puedes apreciar la diferencia es pequeñisima.
+Como puedes apreciar la diferencia es pequeñísima.
 
 Una diferencia clara que se puede apreciar entre PIC y PGLS es que en la segunda hay una ordenada al origen (intercept o intercepto) pero no en el PIC. Esto es poque en PGLS no tranformamos nuestros datos en un nuevo especio previo al análisis y por lo tanto no estamos forzados a renunciar a este parámetro en nuestro modelo.
 La equivalencia entre PIC y PGLS no es solamente en la pendiente, también en F, t y el valor de P.
@@ -176,7 +176,7 @@ Los táxones que se separan desde la raíz del árbol tienen una correlación de
 
 
 Ahora que entendemos la forma de nuestro modelo para la correlación del error residual en PGLS, también es sencillo imaginar formas en las que se podrían relajar los supuestos de este modelo. 
-Una relajación muy simple de nuestro modelo podría ser mediante la introducción de un único parámetro adicional, digamos λ, como multiplicador de los elementos fuera de la diagonal de la matriz (Pagel 1999). Lo interesante de este modelo varía desde un un OLS (cuando λ = 0) hasta PGLS estándar (cuando λ = 1). 
+Una relajación muy simple de nuestro modelo podría ser mediante la introducción de un único parámetro adicional, digamos λ, como multiplicador de los elementos fuera de la diagonal de la matriz (Pagel 1999). Lo interesante de este modelo varía desde un OLS (cuando λ = 0) hasta PGLS estándar (cuando λ = 1). 
 Podemos determinar qué valor de λ está mejor respaldado por el patrón en nuestros datos estimándolo usando un procedimiento llamado máxima verosimilitud. 
 
 Para aplicar el modelo λ en PGLS, usaremos una función alternativa para generar la estructura de correlación de los errores en nuestro modelo lineal. Esta función también es del paquete ape y se llama corPagel
@@ -206,7 +206,7 @@ ANOVA Y ANCOVA FILOGENÉTICO
 
 Quizás la característica más atractiva de PGLS en comparación con la regresión de contrastes es que es muy sencillo ajustar un modelo lineal que incluye uno o más factores como variables independientes (es decir, un modelo ANOVA) o una combinación de factores continuos y discretos (es decir, un modelo ANCOVA).
 
-Para ver cómo funciona esto, podemos probar la hipótesis de que el patrón de actividad diaria (nocturno, diurno o catemeral -crepuscular- afecta el tamaño relativo del ojo. Decimos aquí tamaño relativo del ojo porque nuestro análisis también controlará la alometría al incluir el tamaño del cráneo como una covariable adicional. 
+Para ver cómo funciona esto, podemos probar la hipótesis de que el patrón de actividad diaria (nocturno, diurno o catemeral -crepuscular-) afecta al tamaño relativo del ojo. Decimos aquí tamaño relativo del ojo porque nuestro análisis también controlará la alometría al incluir el tamaño del cráneo como una covariable adicional. 
 Este tipo de modelo se llama modelo ANCOVA y asumiremos que la estructura de correlación del error residual está dada por la filogenia. Por lo tanto, llamaremos a nuestro modelo ANCOVA filogenético generalizado.
 El patrón de actividad ya es una columna en nuestro conjunto de datos primate.data. También hemos construido nuestra estructura de correlación, corBM, que depende sólo de nuestro árbol.
 
@@ -237,7 +237,7 @@ lines(xx,exp(predict(primate.ancova,newdata=data.frame(Skull_length=xx,Activity_
 
 ```
 
-Esto indica que las especies nocturnas tienen orbitas más grandes en comparación a las otras.
+Esto indica que las especies nocturnas tienen orbitas más grandes en comparación a los otros.
 
 En resumen, PGLS es más flexible que PIC.
 

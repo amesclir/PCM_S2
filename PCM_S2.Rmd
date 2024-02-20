@@ -171,7 +171,7 @@ mtext("(b)",line=1,adj=0)
 
 Es relativamente fácil entender cómo la matriz de correlación se completa a partir de la filogenia. 
 Tomemos, por ejemplo, la correlación entre los taxones C y E. Para obtener esto, simplemente dividimos la distancia desde la raíz del común ancestro de C y E (4.36) por la longitud total del árbol (10) y obtenemos la correlación (0.44). 
-Asimismo, para obtener la correlación entre los taxones C y D, calculamos la distancia desde la raíz hasta su ancestro común (4.36 + 2,96 = 7,32) y dividirlo por la longitud total del árbol (10) para obtener la correlación, la cual (redondeada a dos dígitos).
+Asimismo, para obtener la correlación entre los taxones C y D, calculamos la distancia desde la raíz hasta su ancestro común (4.36 + 2.96 = 7.32) y dividirlo por la longitud total del árbol (10) para obtener la correlación, la cual (redondeada a dos dígitos).
 Los táxones que se separan desde la raíz del árbol tienen una correlación de 0. Y cada taxon tiene una correlación con siguo mismo de 1.
 
 
@@ -179,7 +179,7 @@ Ahora que entendemos la forma de nuestro modelo para la correlación del error r
 Una relajación muy simple de nuestro modelo podría ser mediante la introducción de un único parámetro adicional, digamos λ, como multiplicador de los elementos fuera de la diagonal de la matriz (Pagel 1999). Lo interesante de este modelo varía desde un OLS (cuando λ = 0) hasta PGLS estándar (cuando λ = 1). 
 Podemos determinar qué valor de λ está mejor respaldado por el patrón en nuestros datos estimándolo usando un procedimiento llamado máxima verosimilitud. 
 
-Para aplicar el modelo λ en PGLS, usaremos una función alternativa para generar la estructura de correlación de los errores en nuestro modelo lineal. Esta función también es del paquete ape y se llama corPagel
+Para aplicar el modelo λ en PGLS, usaremos una función alternativa para generar la estructura de correlación de los errores en nuestro modelo lineal. Esta función también es del paquete ape y se llama corPagel.
 
 ```{r}
 corLambda <-corPagel(value=1,phy=primate.tree,form=~spp)
@@ -245,7 +245,7 @@ En resumen, PGLS es más flexible que PIC.
 ##################################
 ACTIVIDAD
 
-Repite los análisis de PGLS mostrados en esta sesión pero mediante el uso de la función gpls() del paquete caper.
+Repite los análisis de PGLS mostrados en esta sesión pero mediante el uso de la función pgls() del paquete caper.
 
 ```{r}
 

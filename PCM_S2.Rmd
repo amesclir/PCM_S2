@@ -15,7 +15,7 @@ NO INDEPENDENCIA ESTADÍSTICA DE LOS DATOS DE ESPECIES EMPARENTADAS
 
 Desafortunadamente, debido a la semejanza de organismos vivos relacionados que descienden de ancestros comunes en el pasado, la suposición de independencia de los valores de las variables generalmente no se cumple para los datos que se originan en especies diferentes (Felsenstein 1985). 
 Por el contrario, de hecho, las especies más estrechamente relacionadas a menudo tienden a tener desviaciones residuales correlacionadas en sus valores de la variable y con respecto a los estimados por el modelo.
-Por ejemplo, si una especie tiene una gran desviación residual positiva en la variable y en comparación con el valor estimado por el modelo, entonces es más probable que otras especies hermanas estrechamente relacionadas tengan grandes valores residuales positivos también. Si este es el caso, entonces los errores residuales en y están correlacionados, lo que implica una violación del supuesto del método de mínimos cuadrados de que los errores residuales están distribuidos de manera identica e independiente (lo llamaremos condición i.i.d).
+Por ejemplo, si una especie tiene una gran desviación residual positiva en la variable y en comparación con el valor estimado por el modelo, entonces es más probable que otras especies hermanas estrechamente relacionadas tengan grandes valores residuales positivos también. Si este es el caso, entonces los errores residuales están correlacionados, lo que implica una violación del supuesto del método de mínimos cuadrados de que los errores residuales están distribuidos de manera identica e independiente (lo llamaremos condición i.i.d).
 Para el caso de la regresión lineal, la técnica de contrastes filogenéticamente independientes resuelve este problema transformando primero los datos en un conjunto de contrastes que son teóricamente independientes de la filogenia y por lo tanto no violan i.i.d. Esto significa que podemos proceder a utilizar estos contrastes con el método de los mínimos cuadrados ordinarios.
 
 Sin embargo, mucho antes del desarrollo de los contrastes independientes, ya existía un método de estimación que nos permitía contabilizar las variables no i.i.d. en el error residual de un modelo de regresión. Esta técnica se llama mínimos cuadrados generalizados o GLS. GLS fue descrito por primera vez en un artículo de Aitken (1936). Unos años después de la publicación del método de contrastes de Felsenstein (1985), Grafen (1989) señaló que GLS podría usarse para propósitos similares. De hecho, posteriormente se ha demostrado que la regresión de contrastes es un caso especial de GLS, como veremos a continuación (Blomberg et al. 2012). GLS, sin embargo, también nos permite ser un poco más flexibles acerca de la estructura de correlación específica del error residual en el modelo, y también nos permite incluir factores discretos como variables independientes. 
@@ -106,7 +106,7 @@ summary(pgls.primate)
 
 ¿Cómo se compara esto con el modelo que ajustamos a nuestros contrastes anteriormente? 
 Son, como mínimo, similares, pero ¿son idénticos? 
-Para averiguarlo, podríamos hacer esto usando la prueba lógica ==; sin embargo, en las computadoras suele ser una buena idea evitar intentar evaluar la igualdad de los números reales. Esto se debe a que, por razones técnicas, los números reales pueden diferir en el decimoquinto decimal incluso cuando se supone que son idénticos. 
+Para averiguarlo, podríamos hacer esto usando la prueba lógica ==; sin embargo, en las computadoras no suele ser una buena idea evitar intentar evaluar la igualdad de los números reales. Esto se debe a que, por razones técnicas, los números reales pueden diferir en el decimoquinto decimal incluso cuando se supone que son idénticos. 
 En lugar de eso, calculemos el valor absoluto de la diferencia entre los coeficientes de pendiente de los dos modelos. Si esto se evalúa como un número muy pequeño, entonces sugiere que sus valores son los mismos.
 
 ```{r}
@@ -121,9 +121,9 @@ Una diferencia clara que se puede apreciar entre PIC y PGLS es que en la segunda
 La equivalencia entre PIC y PGLS no es solamente en la pendiente, también en F, t y el valor de P.
 
 ```{r}
-summary(pic.primate)$coefficients[1,4]
+summary(pic.primate)$coefficients
 
-summary(pgls.primate)$tTable[2,4]
+summary(pgls.primate)$tTable
 
 ```
 
@@ -257,12 +257,15 @@ library(caper)
 ```
 
 
-REFERENCIAS BÁSICAS
+REFERENCIAS TEÓRICAS BÁSICAS
 
 Blomberg, S. P., Lefevre, J. G., Wells, J. A., & Waterhouse, M. (2012). Independent contrasts and PGLS regression estimators are equivalent. Systematic biology, 61(3), 382-391.
 
 Pagel, M. (1999). Inferring the historical patterns of biological evolution. Nature, 401(6756), 877-884.
 
-REFERENCIAS RECOMENDADAS
+REFERENCIAS TEÓRICAS RECOMENDADAS
 
 Kirk EC, Kay RF. 2004. The evolution of high visual acuity in the Anthropoidea. In Anthropoid Origins (pp. 539-602). Springer US.
+
+REFERENCIAS EJEMPLOS PRÁCTICOS
+Ortiz, P. L., Fernández‐Díaz, P., Pareja, D., Escudero, M., & Arista, M. (2021). Do visual traits honestly signal floral rewards at community level?. Functional Ecology, 35(2), 369-383.

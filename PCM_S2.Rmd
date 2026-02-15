@@ -81,7 +81,7 @@ Ahora vamos a proceder con nuestro PGLS.
 Para ello vamos a usar el paquete nlme.
 Para nuestro siguiente paso, necesitamos tomar nuestro árbol filogenético de primates y convertirlo en un tipo especial de objeto R llamado estructura de correlación.
 Esto es lo que nuestra función de ajuste de modelos GLS tomará como entrada, junto con nuestros datos. Luego, la estructura de correlación se usará para definir la distribución de los residuos de nuestro modelo lineal.
-Por ahora, construiremos nuestro objeto "corStruct" usando la función mono corBrowniana.
+Por ahora, construiremos nuestro objeto "corStruct" usando la función corBrowniana.
 
 ```{r}
 
